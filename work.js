@@ -4,9 +4,10 @@ import { MMDLoader } from './lib/module/MMDLoader.js';
 import { MMDAnimationHelper } from './lib/module/MMDAnimationHelper.js';
 var mesh, scene, renderer, effect, camera, loader, helper;
 var clock = new THREE.Clock();
+var run = false;
 Ammo().then(function () {
     init();
-    render(true);
+    render();
 });
 function init() {
     const container = document.createElement('div');
@@ -33,6 +34,9 @@ function init() {
     const cameraFiles = "lib/file/52.vmd";
     helper = new MMDAnimationHelper({ pmxAnimation: true });
     loader = new MMDLoader();
+    loader.load("lib/file/bg1/1.pmx", function(m){
+        scene.add(m);
+    });
     loader.loadWithAnimation(modelFile, vmdFiles, function (mmd) {
         mesh = mmd.mesh;
         helper.add(mesh, {
@@ -44,7 +48,7 @@ function init() {
                 animation: cameraAnimation
             });
             scene.add(mesh);
-            render();
+            run = true;
         });
     });
     window.addEventListener('resize', onWindowResize);
@@ -57,16 +61,13 @@ function init() {
     }
 
 }
-function render(first) {
+function render() {
+    requestAnimationFrame(render);
+    if (!run) return;
     var t = clock.getDelta();
     document.querySelector(".info").innerText = "clock: " + t;
-    if (!first) {
-        helper.update(t);
-    } else {
-        return;
-    }
+    helper.update(t);
     effect.render(scene, camera);
-    requestAnimationFrame(render);
 
 
 }
