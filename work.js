@@ -28,8 +28,8 @@ function init() {
     container.appendChild(renderer.domElement);
     effect = new OutlineEffect(renderer);
     const modelFile = "lib/file/1/1.pmx";
-    const vmdFiles = "";
-    const cameraFiles = "";
+    const vmdFiles = "lib/file/5.vmd";
+    const cameraFiles = "lib/file/_5.vmd";
     helper = new MMDAnimationHelper({ pmxAnimation: true });
     loader = new MMDLoader();
     loader.loadWithAnimation(modelFile, vmdFiles, function (mmd) {
@@ -43,6 +43,7 @@ function init() {
                 animation: cameraAnimation
             });
             scene.add(mesh);
+            render();
         });
     });
     window.addEventListener('resize', onWindowResize);
