@@ -5,6 +5,8 @@ import { MMDAnimationHelper } from './lib/module/MMDAnimationHelper.js';
 var mesh, scene, renderer, effect, camera, loader, helper;
 var clock = new THREE.Clock();
 var run = false;
+var _check = 0;
+var fps = 0;
 Ammo().then(function () {
     init();
     render();
@@ -59,13 +61,17 @@ function init() {
 
         effect.setSize(window.innerWidth, window.innerHeight);
     }
-
+    setInterval(() => {
+        fps = _check;
+        _check = 0;
+        document.querySelector(".info").innerText = `FPS: ${fps}`;
+    }, 999);
 }
 function render() {
+    _check++;
     requestAnimationFrame(render);
     if (!run) return;
     var t = clock.getDelta();
-    document.querySelector(".info").innerText = "clock: " + t;
     helper.update(t);
     effect.render(scene, camera);
 
