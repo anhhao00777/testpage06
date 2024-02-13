@@ -28,7 +28,7 @@ function init() {
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.toneMapping = THREE.ACESFilmicToneMapping; //
-    renderer.toneMappingExposure = 0.44; //
+    renderer.toneMappingExposure = 0.4; //
     container.appendChild(renderer.domElement);
     effect = new OutlineEffect(renderer);
     const modelFile = "lib/file/1/1.pmx";
