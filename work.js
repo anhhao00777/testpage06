@@ -54,17 +54,18 @@ function init() {
 
         effect.setSize(window.innerWidth, window.innerHeight);
     }
-    function render(first) {
-        var t = clock.getDelta();
-        document.querySelector(".info").innerText = "clock: " + t;
-        if (!first) {
-            helper.update(t);
-        } else {
-            return;
-        }
-        effect.render(scene, camera);
-        requestAnimationFrame(render);
 
-
+}
+function render(first) {
+    var t = clock.getDelta();
+    document.querySelector(".info").innerText = "clock: " + t;
+    if (!first) {
+        helper.update(t);
+    } else {
+        return;
     }
+    effect.render(scene, camera);
+    requestAnimationFrame(render);
+
+
 }
