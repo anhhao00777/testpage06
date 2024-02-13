@@ -3,6 +3,7 @@ import { OutlineEffect } from './lib/module/OutlineEffect.js';
 import { MMDLoader } from './lib/module/MMDLoader.js';
 import { MMDAnimationHelper } from './lib/module/MMDAnimationHelper.js';
 var mesh, scene, renderer, effect, camera, loader, helper;
+var clock = new THREE.Clock();
 Ammo().then(function () {
     init();
     render(true);
