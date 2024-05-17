@@ -59,7 +59,7 @@ function init() {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
 
-        effect.setSize(window.innerWidth, window.innerHeight);
+        effect.setSize(window.innerWidth * 1.5, window.innerHeight * 1.5);
     }
     setInterval(() => {
         fps = _check;
