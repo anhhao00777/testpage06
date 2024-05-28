@@ -26,7 +26,7 @@ function init() {
     scene.add(directionalLight);
     renderer = new THREE.WebGLRenderer();
     renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(window.innerWidth * 1.5, window.innerHeight * 1.5);
     renderer.toneMapping = THREE.ACESFilmicToneMapping; //
     renderer.toneMappingExposure = 0.4; //
     container.appendChild(renderer.domElement);
